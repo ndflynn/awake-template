@@ -2,7 +2,7 @@
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
-$primary: #00d1b2;
+$primary: #6d7967;  // green
 $primary-invert: findColorInvert($primary);
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
@@ -25,3 +25,9 @@ $colors: (
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
+
+$navbar-background-color: transparent;
+$navbar-item-active-color: #e8ccc4;
+
+$input-shadow: 0;
+$input-background-color: transparent;

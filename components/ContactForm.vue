@@ -3,39 +3,34 @@
     <!-- Name -->
     <div class="field">
       <label class="label is-medium">Name</label>
-      <div class="control has-icons-left">
-        <input class="input is-medium" type="text" placeholder="John Smith" />
-        <span class="icon is-small is-left">
-          <font-awesome-icon icon="user" />
-        </span>
+      <div class="control">
+        <input
+          class="input is-medium is-rounded"
+          type="text"
+          placeholder="John Smith"
+        />
       </div>
     </div>
     <!-- Email -->
     <div class="field">
       <label class="label is-medium">Email</label>
-      <div class="control has-icons-left">
+      <div class="control">
         <input
-          class="input is-medium"
+          class="input is-medium is-rounded"
           type="email"
           placeholder="you@email.com"
         />
-        <span class="icon is-small is-left">
-          <font-awesome-icon icon="envelope" />
-        </span>
       </div>
     </div>
     <!-- Subject -->
     <div class="field">
       <label class="label is-medium">Subject</label>
-      <div class="control has-icons-left">
+      <div class="control">
         <input
-          class="input is-medium"
+          class="input is-medium is-rounded"
           type="text"
           placeholder="Brief Summary"
         />
-        <span class="icon is-small is-left">
-          <font-awesome-icon icon="briefcase" />
-        </span>
       </div>
     </div>
     <!-- Message -->
@@ -43,15 +38,15 @@
       <label class="label is-medium">Message</label>
       <div class="control">
         <textarea
-          class="textarea"
+          class="textarea is-rounded"
           placeholder="Detailed description of your comment, request, etc"
           rows="8"
         ></textarea>
       </div>
     </div>
     <div class="control">
-      <button class="button is-primary">
-        Contact Us
+      <button class="button is-primary is-rounded">
+        Submit
       </button>
     </div>
   </form>

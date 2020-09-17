@@ -22,7 +22,7 @@ export default {
   name: 'PostsGrid',
   components: { PostCard },
   props: {
-    perRow: { type: Number, default: 3 },
+    perRow: { type: Number, default: 4 },
     number: { type: Number, default: 0 },
     order: { type: String, default: 'DESC' },
     category: {

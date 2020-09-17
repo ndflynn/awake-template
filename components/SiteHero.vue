@@ -6,19 +6,20 @@
       :lazy="false"
       :srcset="responsiveImage.srcSet"
     />
+    <!-- Hero head: will stick at the top -->
+    <div class="hero-head">
+      <site-nav />
+    </div>
     <div class="hero-body">
       <div class="container">
-        <h1 class="title animated fadeInUp">
+        <h1 class="title animated fadeIn">
           {{ title }}
         </h1>
-        <h2 class="subtitle animated fadeInUp slower">
+        <h2 class="subtitle animated fadeIn">
           {{ subtitle }}
         </h2>
         <br />
-        <div
-          v-if="$slots.default"
-          class="under-subtitle animated fadeInDown slower"
-        >
+        <div v-if="$slots.default" class="under-subtitle animated fadeIn">
           <slot />
         </div>
       </div>
@@ -32,7 +33,7 @@ export default {
     title: { type: String, default: '' },
     subtitle: { type: String, default: '' },
     image: { type: String, default: '' },
-    color: { type: String, default: '#469af0' },
+    color: { type: String, default: '#ff0000' },
     theme: { type: String, default: '' }
   },
   computed: {
@@ -54,7 +55,7 @@ export default {
 
 <style lang="scss" scoped>
 .hero {
-  margin-top: 52px;
+  margin-top: 0;
   background-size: cover !important;
   background-position: center;
   text-align: center;
@@ -127,7 +128,6 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.65);
     position: absolute;
   }
   .hero-body {

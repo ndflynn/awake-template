@@ -1,61 +1,102 @@
 <template>
   <nav
-    class="navbar has-shadow is-fixed-top"
+    class="navbar is-transparent is-fixed-top"
+    :class="{ isSolid: scrollDown }"
     role="navigation"
     aria-label="main navigation"
   >
-    <div class="navbar-brand">
-      <nuxt-link class="navbar-item" to="/">
-        <site-logo v-if="$siteConfig.logo === 'logo-component'" />
-        <img
-          v-else
-          :src="$siteConfig.logo"
-          :alt="$siteConfig.siteName"
-          class="logo"
-        />
-      </nuxt-link>
-      <hamburger-button @click="active = !active" />
-    </div>
-
-    <div
-      :class="{
-        'navbar-menu': true,
-        'is-active': active
-      }"
-    >
-      <ul class="navbar-end">
-        <li
-          v-for="item in $siteConfig.mainMenu"
-          :key="item.link"
-          class="navbar-item"
-          @click="active = false"
-        >
-          <component
-            :is="item.link.startsWith('http') ? 'a' : 'nuxt-link'"
-            :href="item.link"
-            :to="item.link"
-            :target="item.target ? item.target : '_self'"
+    <div class="container">
+      <div
+        :class="{
+          'navbar-menu': true,
+          'is-active': active
+        }"
+      >
+        <ul class="navbar-start">
+          <li
+            v-for="item in $siteConfig.mainMenuStart"
+            :key="item.link"
+            class="navbar-item"
+            @click="active = false"
           >
-            {{ item.name }}
-          </component>
-        </li>
-        <li class="navbar-item site-search-wrapper">
-          <site-search />
-        </li>
-      </ul>
+            <component
+              :is="item.link.startsWith('http') ? 'a' : 'nuxt-link'"
+              :href="item.link"
+              :to="item.link"
+              :target="item.target ? item.target : '_self'"
+            >
+              {{ item.name }}
+            </component>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-brand">
+        <nuxt-link class="navbar-item" to="/">
+          <site-logo v-if="$siteConfig.logo === 'logo-component'" />
+          <img
+            v-else
+            :src="$siteConfig.logo"
+            :alt="$siteConfig.siteName"
+            class="logo"
+          />
+        </nuxt-link>
+        <hamburger-button @click="active = !active" />
+      </div>
+
+      <div
+        :class="{
+          'navbar-menu': true,
+          'is-active': active
+        }"
+      >
+        <ul class="navbar-end">
+          <li
+            v-for="item in $siteConfig.mainMenu"
+            :key="item.link"
+            class="navbar-item"
+            @click="active = false"
+          >
+            <component
+              :is="item.link.startsWith('http') ? 'a' : 'nuxt-link'"
+              :href="item.link"
+              :to="item.link"
+              :target="item.target ? item.target : '_self'"
+            >
+              {{ item.name }}
+            </component>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 </template>
 <script>
-import SiteSearch from '~/components/SiteSearch'
 import HamburgerButton from '~/components/HamburgerButton'
 export default {
   name: 'SiteNav',
-  components: { SiteSearch, HamburgerButton },
+  components: { HamburgerButton },
   data() {
     return {
-      active: false
+      active: false,
+      progress: 0,
+      scrollDown: false
     }
+  },
+  mounted() {
+    window.addEventListener('scroll', (e) => {
+      requestAnimationFrame(() => {
+        const scrollPos = window.scrollY
+        /* const winHeight = window.innerHeight
+        const docHeight = document.documentElement.scrollHeight
+        const perc = (100 * scrollPos) / (docHeight - winHeight) */
+        if (scrollPos >= 80) {
+          this.scrollDown = true
+        } else {
+          this.scrollDown = false
+        }
+        this.progress = scrollPos
+      })
+    })
   }
 }
 </script>
@@ -75,5 +116,11 @@ export default {
 
 .navbar-menu a {
   display: block;
+  &.nuxt-link-active {
+    color: #e8ccc4;
+  }
+}
+.hero .navbar.isSolid {
+  background: white;
 }
 </style>

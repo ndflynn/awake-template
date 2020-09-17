@@ -9,36 +9,28 @@ import theCMS from '../cms/netlify/cms'
  * General Site configurations
  */
 export default {
-  siteName: 'Awake',
+  siteName: 'Fridays Cannabis',
   tagline: 'A Nuxt.js Theme for Netlify CMS',
-  featureImage: '/uploads/home-hero.jpg',
+  featureImage: '/uploads/landing-bkg-2.jpg',
   logo: 'logo-component', // 'logo-component', // or '/logo.svg' for regular image
   googleAnalytics: {
     on: true,
     id: process.env.GOOGLE_ANALYTICS_ID
   },
-  mainMenu: [
+  mainMenuStart: [
     {
-      name: 'About',
-      link: '/about'
-    },
-    {
-      name: 'Contact',
-      link: '/contact'
+      name: 'SHOP NOW',
+      link: '/shop'
     },
     {
       name: 'Categories',
       link: '/categories'
-    },
+    }
+  ],
+  mainMenu: [
     {
-      name: 'Github Repo',
-      link: 'https://github.com/danielkellyio/awake-template',
-      target: '_blank'
-    },
-    {
-      name: 'Awake+ Premium',
-      link: 'https://awake-premium-lp.netlify.com/',
-      target: '_blank'
+      name: 'CONTACT',
+      link: '/contact'
     }
   ],
   hero: {
@@ -99,7 +91,7 @@ export default {
     date: {
       display: true
     },
-    perRow: 3,
+    perRow: 4,
     perPage: 6
   }
 }
