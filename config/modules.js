@@ -15,7 +15,8 @@ export const modules = [
   '@nuxtjs/eslint-module',
   '@nuxtjs/style-resources',
   'nuxt-fontawesome',
-  'nuxt-responsive-loader'
+  'nuxt-responsive-loader',
+  'nuxt-gmaps'
 ]
 if (siteConfig.googleAnalytics.on && siteConfig.googleAnalytics.id) {
   modules.push('@nuxtjs/google-gtag')
@@ -50,5 +51,8 @@ export const modulesSettings = {
   },
   'google-gtag': {
     id: siteConfig.googleAnalytics.id
+  },
+  'nuxt-gmaps': {
+    key: 'AIzaSyAFg-9-NP8cjHAbzOOOHTYyiyMTzTOCnr8'
   }
 }
