@@ -1,6 +1,6 @@
 <template>
   <footer class="site-footer">
-    <section class="hero is-medium">
+    <section class="hero is-small">
       <img
         class="footer-bg-img"
         :src="responsiveImage.src"
@@ -9,34 +9,58 @@
       />
       <div class="hero-body">
         <div class="container">
-          {{ $siteConfig.siteName }} &copy; {{ new Date().getFullYear() }} - All
-          Rights Reserved
-          <br />
-          Made with <span style="color: #e25555;">&#9829;</span> with Nuxt.js
-          and Netlify
           <div class="columns">
             <div class="column">
-              <h1 class="title">
+              <site-logo />
+            </div>
+            <div class="column has-text-right">
+              <p>
+                <NuxtLink to="/">
+                  Home
+                </NuxtLink>
+                <NuxtLink to="/shop">
+                  Shop Now
+                </NuxtLink>
+                <NuxtLink to="/faq">
+                  FAQ
+                </NuxtLink>
+                <NuxtLink to="/contact">
+                  Contact
+                </NuxtLink>
+              </p>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column">
+              <h3 class="title">
                 Contact us
-              </h1>
-              <div class="columns is-mobile">
+              </h3>
+              <div class="columns">
                 <div class="column">
-                  <p class="bd-notification is-info">
-                    First nested column
+                  <p>
+                    hello@fridayscannabis.com<br />
+                    (XXX) XXX.XXXX
+                  </p>
+                  <p>
+                    FRIDAYS Cannabis<br />
+                    190 Main St W<br />
+                    Picton, ON K0K 2T0<br />
+                    Canada
                   </p>
                 </div>
                 <div class="column">
-                  <p class="bd-notification is-info">
-                    Second nested column
+                  <p>
+                    Mon-Sat: 9am-9pm<br />
+                    Sun: 9am-7pm
                   </p>
                 </div>
               </div>
             </div>
             <div class="column">
-              <h1 class="title">
+              <h3 class="title">
                 Stay in touch
-              </h1>
-              <div class="columns is-mobile">
+              </h3>
+              <div class="columns">
                 <div class="column is-half">
                   <p class="bd-notification is-danger">
                     50%
@@ -53,6 +77,32 @@
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="column has-text-right">
+            <span class="icon has-text-info">
+              <font-awesome-icon
+                icon="envelope"
+                class="search-icon"
+                @click="toggleSearchBar()"
+              />
+              <span class="icon is-large is-right">
+                <font-awesome-icon icon="envelope" />
+                <i class="fas fa-envelope"></i>
+              </span>
+            </span>
+          </div>
+          <hr />
+          <div class="columns is-size-6">
+            <div class="column">
+              <p class="mt-0">
+                {{ new Date().getFullYear() }} &copy; {{ $siteConfig.siteName }}
+              </p>
+            </div>
+            <div class="column has-text-right">
+              <p class="mt-0">
+                Back to top
+              </p>
             </div>
           </div>
         </div>
@@ -92,6 +142,7 @@ footer {
     text-align: left;
     overflow: hidden;
     position: relative;
+    color: $pink-lighter;
     .footer-bg-img {
       position: absolute;
       top: 0;
@@ -102,6 +153,23 @@ footer {
       width: 100%;
       height: 100%;
     }
+  }
+}
+h3.title {
+  font-size: 3.6rem;
+  font-weight: 400;
+  color: $pink-lighter;
+  margin-bottom: 0;
+}
+a {
+  color: $pink-lighter;
+  font-weight: 500;
+  font-size: 2rem;
+  padding-right: 36px;
+  &.nuxt-link-exact-active,
+  &:hover,
+  &:focus {
+    color: $green-light;
   }
 }
 </style>

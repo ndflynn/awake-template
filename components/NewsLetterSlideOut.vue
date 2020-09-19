@@ -16,15 +16,15 @@
       <p>{{ header }}</p>
     </div>
     <div class="message-body">
-      <news-letter-form />
+      <agegate-form />
     </div>
   </article>
 </template>
 <script>
-import NewsLetterForm from '~/components/NewsLetterForm'
+import AgegateForm from '~/components/AgegateForm'
 export default {
   name: 'NewsLetterSlideOut',
-  components: { NewsLetterForm },
+  components: { AgegateForm },
   data() {
     return {
       active: true

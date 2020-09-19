@@ -225,8 +225,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.GMap,
-p {
+.GMap {
   margin-top: 30px;
   width: 100%;
 }

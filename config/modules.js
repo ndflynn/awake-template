@@ -21,13 +21,16 @@ export const modules = [
 if (siteConfig.googleAnalytics.on && siteConfig.googleAnalytics.id) {
   modules.push('@nuxtjs/google-gtag')
 }
+if (siteConfig.googleMaps.on) {
+  modules.push('nuxt-gmaps')
+}
 
 export const modulesSettings = {
   fontawesome: {
     imports: [
       {
         set: '@fortawesome/free-solid-svg-icons',
-        icons: ['faTimes', 'faSearch', 'faEnvelope', 'faUser', 'faBriefcase']
+        icons: ['faTimes', 'faSearch', 'faEnvelope', 'faUser', 'faMapPin']
       }
     ]
   },

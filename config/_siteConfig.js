@@ -11,11 +11,14 @@ import theCMS from '../cms/netlify/cms'
 export default {
   siteName: 'Fridays Cannabis',
   tagline: 'A Nuxt.js Theme for Netlify CMS',
-  featureImage: '/uploads/landing-bkg-2.jpg',
+  featureImage: '/uploads/home-hero.jpg',
   logo: 'logo-component', // 'logo-component', // or '/logo.svg' for regular image
   googleAnalytics: {
     on: true,
     id: process.env.GOOGLE_ANALYTICS_ID
+  },
+  googleMaps: {
+    on: true
   },
   mainMenuStart: [
     {
@@ -23,7 +26,7 @@ export default {
       link: '/shop'
     },
     {
-      name: 'Categories',
+      name: 'FAQ',
       link: '/categories'
     }
   ],

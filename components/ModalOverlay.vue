@@ -69,7 +69,7 @@ export default {
 .modal {
   &.is-active {
     .modal-card {
-      animation: fadeInDown 0.3s ease;
+      animation: fadeIn 0.3s ease;
     }
     .modal-background {
       animation: fadeIn 0.6s ease;

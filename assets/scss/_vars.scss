@@ -1,9 +1,24 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
+$body-size: 10px;
+
 // Set your colors
-$primary: #6d7967;  // green
-$primary-invert: findColorInvert($primary);
+
+$green: #6d7967;
+$green-light: #6d7a66;
+$green-dark: #444f3f;
+
+$pink: #e8ccc4;
+$pink-light: #e2d7cc;
+$pink-lighter: #e8dcd2;
+
+$brown: #7f6f5d;
+$light: #f8f5f1; // off-white
+$dark: $green-dark;
+
+$primary: $green;
+
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
 
@@ -14,7 +29,7 @@ $colors: (
   "light": ($light, $light-invert),
   "dark": ($dark, $dark-invert),
   "primary": ($primary, $primary-invert),
-  "info": ($info, $info-invert),
+  "info": ($pink-lighter, $info-invert),
   "success": ($success, $success-invert),
   "warning": ($warning, $warning-invert),
   "danger": ($danger, $danger-invert),
@@ -27,7 +42,20 @@ $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
 $navbar-background-color: transparent;
-$navbar-item-active-color: #e8ccc4;
+$navbar-padding-horizontal: 4rem;
+$navbar-height: 18rem;
 
-$input-shadow: 0;
+$input-shadow: 3;
 $input-background-color: transparent;
+
+$family-primary: "Roboto", sans-serif;
+$family-sans-serif: "Roboto", sans-serif;
+$family-secondary: "Libre Caslon Text", serif;
+
+$button-border-width: 2px;
+
+$hr-background-color: $pink-lighter;
+$hr-height: 1px;
+
+$modal-card-body-background-color: $green-dark;
+

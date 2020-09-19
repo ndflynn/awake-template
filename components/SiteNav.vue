@@ -86,9 +86,6 @@ export default {
     window.addEventListener('scroll', (e) => {
       requestAnimationFrame(() => {
         const scrollPos = window.scrollY
-        /* const winHeight = window.innerHeight
-        const docHeight = document.documentElement.scrollHeight
-        const perc = (100 * scrollPos) / (docHeight - winHeight) */
         if (scrollPos >= 80) {
           this.scrollDown = true
         } else {
@@ -101,26 +98,44 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.navbar-menu {
+  .navbar-item {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    a {
+      display: block;
+      font-weight: 600;
+      font-size: 1.8rem;
+      color: $pink;
+      &.nuxt-link-exact-active,
+      &:hover,
+      &:focus {
+        color: $green-light;
+      }
+    }
+  }
+}
 .navbar-item img {
   max-height: 2rem;
-}
-.site-search-wrapper {
-  transform: translateX(5px);
-  @media (max-width: 1023px) {
-    display: none;
-  }
 }
 .navbar-burger {
   height: auto;
 }
 
-.navbar-menu a {
-  display: block;
-  &.nuxt-link-active {
-    color: #e8ccc4;
+.hero .navbar.isSolid {
+  background: $light;
+  min-height: 8.4rem;
+  > .container {
+    min-height: 8.4rem;
+  }
+  .navbar-brand {
+    min-height: 8.4rem;
   }
 }
-.hero .navbar.isSolid {
-  background: white;
+@media screen and (min-width: 1024px) {
+  .navbar-start,
+  .navbar-end {
+    min-width: 220px;
+  }
 }
 </style>

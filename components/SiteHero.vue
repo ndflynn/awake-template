@@ -1,5 +1,5 @@
 <template>
-  <section :class="`hero is-medium hero-theme-${computedTheme}`">
+  <section :class="`hero is-${computedSize} hero-theme-${computedTheme}`">
     <img
       class="hero-bg-img"
       :src="responsiveImage.src"
@@ -12,15 +12,19 @@
     </div>
     <div class="hero-body">
       <div class="container">
-        <h1 class="title animated fadeIn">
-          {{ title }}
-        </h1>
-        <h2 class="subtitle animated fadeIn">
-          {{ subtitle }}
-        </h2>
-        <br />
-        <div v-if="$slots.default" class="under-subtitle animated fadeIn">
-          <slot />
+        <div class="columns">
+          <div class="column is-three-fifths is-offset-one-fifth">
+            <h1 class="title animated fadeIn is-spaced">
+              {{ title }}
+            </h1>
+            <h2 class="subtitle animated fadeIn mt-2">
+              {{ subtitle }}
+            </h2>
+            <br />
+            <div v-if="$slots.default" class="under-subtitle animated fadeIn">
+              <slot />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -33,8 +37,8 @@ export default {
     title: { type: String, default: '' },
     subtitle: { type: String, default: '' },
     image: { type: String, default: '' },
-    color: { type: String, default: '#ff0000' },
-    theme: { type: String, default: '' }
+    theme: { type: String, default: '' },
+    size: { type: String, default: '' }
   },
   computed: {
     responsiveImage() {
@@ -48,6 +52,9 @@ export default {
         return this.$siteConfig.hero.theme
       }
       return this.theme || 'mist'
+    },
+    computedSize() {
+      return this.size || 'large'
     }
   }
 }
@@ -64,9 +71,9 @@ export default {
 }
 
 .title {
-  font-weight: 300;
+  font-weight: 400;
   @media (min-width: 768px) {
-    font-size: 3.2rem;
+    font-size: 40px;
   }
 }
 .subtitle,
@@ -75,14 +82,14 @@ export default {
   margin: 0;
 }
 .subtitle {
-  font-size: 1rem;
+  font-size: 1.8rem;
   margin-bottom: 0 !important;
 }
 .under-subtitle {
   display: inline-block;
   font-size: 0.8rem;
   border-top: 2px solid $primary;
-  padding-top: 5px;
+  padding-top: 30px;
 }
 .opti-image {
   opacity: 0;
@@ -110,6 +117,13 @@ export default {
   .opti-image-loaded {
     opacity: 1;
   }
+}
+.hero-body {
+  min-height: 18rem;
+}
+.hero.is-medium .hero-body {
+  padding-top: 27rem;
+  padding-bottom: 9rem;
 }
 .hero-theme-mist {
   .hero-bg-img {
@@ -140,7 +154,7 @@ export default {
   .subtitle,
   .under-subtitle,
   .under-subtitle strong {
-    color: white;
+    color: $pink-lighter;
   }
 }
 .hero-theme-light.hero {

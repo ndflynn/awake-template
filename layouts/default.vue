@@ -6,7 +6,7 @@
   >
     <nuxt />
     <!-- <news-letter-slide-out v-if="$siteConfig.newsletter.on" /> -->
-    <site-footer image="/uploads/landing-bkg-2.jpg"></site-footer>
+    <site-footer image="/uploads/home-hero.jpg"></site-footer>
   </div>
 </template>
 

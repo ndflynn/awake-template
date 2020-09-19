@@ -1,9 +1,16 @@
 <template>
   <div id="contact-page" class="page-wrapper contact-page content-page">
     <site-hero
+      title=""
+      subtitle=""
+      image="/uploads/home-hero.jpg"
+      size="small"
+    ></site-hero>
+    <site-hero
       title="Contact Us"
       subtitle="Fridays Contact Page"
       image="/uploads/contact-hero.jpg"
+      size="medium"
     ></site-hero>
     <section class="section">
       <div class="container">
@@ -29,14 +36,19 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 import ContactForm from '~/components/ContactForm'
 import ContactMap from '~/components/ContactMap'
 export default {
+  scrollToTop: true,
   head() {
     return {
       title: `Contact | ${this.$siteConfig.siteName}`
     }
   },
-  components: { ContactForm, ContactMap }
+  components: { ContactForm, ContactMap },
+  computed: {
+    ...mapState(['title', 'subtitle', 'featureImage'])
+  }
 }
 </script>
