@@ -16,13 +16,13 @@
         class="button is-primary"
         @click="$eventBus.$emit('modal-triggered', 'agegate-modal')"
       >
-        Subscribe To Newsletter
+        TEST
       </button>
     </site-hero>
     <section class="section is-medium">
       <div class="container">
         <div class="columns is-mobile is-centered">
-          <div class="column is-two-thirds">
+          <div class="column is-four-fifths">
             <h2 class="title">
               About us
             </h2>
@@ -43,18 +43,20 @@
               <div class="column">
                 <div class="field is-grouped is-grouped-centered">
                   <p class="control">
-                    <button
+                    <nuxt-link
                       class="button is-rounded is-outlined button-about is-large"
+                      to="/shop"
                     >
                       Order online<br />&amp; pick up in store
-                    </button>
+                    </nuxt-link>
                   </p>
                   <p>
-                    <button
+                    <nuxt-link
                       class="button is-rounded is-outlined button-about is-large"
+                      to="/contact"
                     >
                       Come visit us
-                    </button>
+                    </nuxt-link>
                   </p>
                 </div>
               </div>
@@ -106,14 +108,17 @@
                 <p class="control is-expanded">
                   <input
                     v-model="email"
-                    class="input is-rounded"
+                    class="input is-rounded is-outlined is-large"
                     type="email"
                     name="EMAIL"
                     placeholder="Enter your email"
                   />
                 </p>
                 <div class="control">
-                  <button type="submit" class="button is-primary is-rounded">
+                  <button
+                    type="submit"
+                    class="button is-rounded is-outlined is-large"
+                  >
                     {{ $siteConfig.newsletter.btnText || 'Subscribe' }}
                   </button>
                 </div>

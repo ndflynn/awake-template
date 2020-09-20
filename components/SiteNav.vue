@@ -104,7 +104,7 @@ export default {
     padding-right: 2rem;
     a {
       display: block;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 1.8rem;
       color: $pink;
       &.nuxt-link-exact-active,

@@ -15,45 +15,13 @@
         Directions
       </button>
     </div>
-    <GMap
-      ref="gMap"
-      :center="{ lat: locations[0].lat, lng: locations[0].lng }"
-      :options="{
-        fullscreenControl: false,
-        streetViewControl: false,
-        mapTypeControl: false,
-        zoomControl: true,
-        gestureHandling: 'cooperative',
-        styles: mapStyle
-      }"
-      :zoom="8"
-    >
-      <GMapMarker
-        v-for="location in locations"
-        :key="location.id"
-        :position="{ lat: location.lat, lng: location.lng }"
-        :options="{
-          icon: location === currentLocation ? pins.selected : pins.notSelected
-        }"
-        @click="currentLocation = location"
-      >
-        <GMapInfoWindow :options="{ maxWidth: 200 }">
-          <b>{{ location.name }}</b>
-          <br />
-          <br />
-          <code>
-            Lat: {{ location.lat }},
-            <br />
-            Lng: {{ location.lng }}
-          </code>
-        </GMapInfoWindow>
-      </GMapMarker>
-    </GMap>
+    <div id="map"></div>
   </section>
 </template>
 
 <script>
 export default {
+  name: 'ContactMap',
   data() {
     return {
       currentLocation: {},
@@ -207,20 +175,28 @@ export default {
       ]
     }
   },
-  methods: {
-    returnToCenter() {
-      this.$refs.gMap.map.setCenter(this.locations[0])
+  mounted() {
+    if (typeof google === 'undefined') {
+      const script = document.createElement('script')
+      script.onload = this.onScriptLoaded
+      script.type = 'text/javascript'
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAFg-9-NP8cjHAbzOOOHTYyiyMTzTOCnr8`
+      document.head.appendChild(script)
+    } else {
+      this.onScriptLoaded()
     }
   },
-  head: {
-    title: 'Contact ',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Contact page description'
+  methods: {
+    returnToCenter() {
+      // this.$refs.gMap.map.setCenter(this.locations[0])
+    },
+    onScriptLoaded(event = null) {
+      if (event) {
+        console.log('Was added')
+      } else {
+        console.log('Already existed')
       }
-    ]
+    }
   }
 }
 </script>

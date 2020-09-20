@@ -12,21 +12,23 @@
         <label class="label is-medium">Province or Territory</label>
         <div class="control">
           <div class="select is-rounded is-large is-info">
-            <select>
-              <option>Ontario</option>
-              <option>Alberta</option>
-              <option>British Columbia</option>
-              <option>Manitoba</option>
-              <option>New Brunswick</option>
-              <option>Newfoundland and Labrador</option>
-              <option>Northwest Territories</option>
-              <option>Nova Scotia</option>
-              <option>Nunavut</option>
-              <option>Prince Edward Island</option>
-              <option>Quebec</option>
-              <option>Saskatchewan</option>
-              <option>Yukon</option>
-            </select>
+            <field>
+              <select placeholder="Small">
+                <option>Ontario</option>
+                <option>Alberta</option>
+                <option>British Columbia</option>
+                <option>Manitoba</option>
+                <option>New Brunswick</option>
+                <option>Newfoundland and Labrador</option>
+                <option>Northwest Territories</option>
+                <option>Nova Scotia</option>
+                <option>Nunavut</option>
+                <option>Prince Edward Island</option>
+                <option>Quebec</option>
+                <option>Saskatchewan</option>
+                <option>Yukon</option>
+              </select>
+            </field>
           </div>
         </div>
       </div>
@@ -68,13 +70,14 @@
           Continue
         </button>
       </div>
-      <span class="has-text-info" v-if="selectYear">{{ getAge }}</span>
+      <span v-if="selectYear" class="has-text-info">{{ getAge }}</span>
     </form>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'AgegateForm',
   data() {
     return {
       selectProvince: null,
