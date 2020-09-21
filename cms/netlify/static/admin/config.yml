@@ -31,6 +31,30 @@ collections:
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Image", name: "image", widget: "image"}
       - {label: "Description", name: "description", widget: "markdown"}
+  - name: "products"
+    label: "Home Page Products"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Brand", name: "brand", widget: "relation", collection: "brand", searchFields: ["name"], valueField: "name", multiple: false}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Types", name: "types", widget: "select" options: ["Indica", "Hybrid", "Sativa", "High CBD"]}
+      - {label: "THC %", name: "thc", widget: "number", value_type: "float", min: 0, max: 100}
+      - {label: "CBD %", name: "cbd", widget: "number", value_type: "float", min: 0, max: 100}
+      - {label: "On Sale", name: "sale", widget: "boolean", default: false}
+      - {label: "Best Seller", name: "best", widget: "boolean", default: false}
+      - {label: "New Product", name: "new", widget: "boolean", default: false}
+  - name: "brand"
+    label: "Brands"
+    folder: "content/brands"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
   - label: "Pages"
     name: "pages"
     files:
@@ -59,3 +83,4 @@ collections:
             fields:
               - {label: Name, name: name, widget: string}
               - {label: Address, name: address, widget: string}
+
