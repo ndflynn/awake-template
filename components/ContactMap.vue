@@ -15,13 +15,34 @@
         Directions
       </button>
     </div>
-    <div id="map"></div>
+    <gmap-map
+      ref="gMap"
+      :center="{ lat: locations[0].lat, lng: locations[0].lng }"
+      :options="{
+        fullscreenControl: false,
+        streetViewControl: false,
+        mapTypeControl: false,
+        zoomControl: true,
+        gestureHandling: 'cooperative',
+        styles: mapStyle
+      }"
+      :zoom="8"
+    >
+      <gmap-marker
+        v-for="location in locations"
+        :key="location.id"
+        :position="{ lat: location.lat, lng: location.lng }"
+        :options="{
+          icon: location === currentLocation ? pins.selected : pins.notSelected
+        }"
+        @click="currentLocation = location"
+      />
+    </gmap-map>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'ContactMap',
   data() {
     return {
       currentLocation: {},
@@ -35,9 +56,9 @@ export default {
       ],
       pins: {
         selected:
-          'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHUSURBVHgB5VU7SwNBEJ7LmZBgMC+UdKKx0MZCG2srwcbCB2glpFDQ3to/IegvSAIWPrBJIySlipUKKqYLaHJ3iWIelzu/DTk8j71H7MQPltmZnflmZ3b3juivQ3BzCIfDI4FAYBvTRV3XR7tBglCCOIP9oFwuv/46QSwWWwfZIaaDNi7vGOlqtZqhfhPE4/EViAy5V6ljE8uVSuXYc4JkMjncarUeMR0ib5Db7fZEvV6vWBd8PG+Q73LIFYyj3lAsa1G/37/D4+JWgPbcQkybd9jpdGYVRXlmSiQSSYmieMWmhgMuwI0kSTPkpQJgzKJnDfJuKYryBJH7sVNBSPGI7BKoFl3n+GguMY4JHiz6GtoybiisRczmEtPFAM+Ifl6i5DmTKYqeX+Nssj19lUz9N2J4XNxDTiQSkwi4oz6ADU3hLdxb7dwW9RyL5B0FHrltAgZUsEce4eRrmwB3ugCRJ3fk4VvsOwEDHtcWxKeDy4emaWmHdRKdFpvNphQKhdhFmOet42D3sftTJw7X/wHgw/U8h1ywkJ/gYJeI/wi/g8kdmqqqG5Alk62Er+emG7nXBFSr1aroNSNknwOVzZnNS6xIHtFoNF6CweAbpheyLOfo3+ALfrSuzJ1F8EsAAAAASUVORK5CYII=',
+          'data:image/png;base64,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',
         notSelected:
-          'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABHElEQVR42uVVyw4BMRQdC98lsbPwG5YSH+BzWFtLZilh0oQgFh6J54IwBmGYtrfaBREdcTvDhpM0adrec3rb+7Csn8fRdrLg7VzBubhDzmHrudRuZ2KRs/miLd6AThfNaOTTGRFIsMm8bkSuXBeGoLVaGi0g39wLI4GTf1EjdE/+E1pAAGgEAenkb/tBo1vQFUDgBbSbny6al77uSQwB/6wJSNHoAo8xj30iaYMW4Lv9wfSTpc0eH6atXtE4TKWNUS4AY2hyddY4k/lwVEZncm9QilQuBGPwnp1B5GIXGi3P0eU0c7EqKrje5hU5d7fr2P2AEJIESkNqB1XJkvhI0/GrTuqZX619tLMF/VHlfnk5/0r7ZMvVWA3rr3AF6LIMZ7PmSlUAAAAASUVORK5CYII='
+          'data:image/png;base64,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'
       },
       mapStyle: [
         {
@@ -45,7 +66,7 @@ export default {
           elementType: 'labels.text.fill',
           stylers: [
             {
-              color: '#ffffff'
+              color: '#585858'
             }
           ]
         },
@@ -57,7 +78,7 @@ export default {
               visibility: 'on'
             },
             {
-              color: '#3e606f'
+              color: '#ffffff'
             },
             {
               weight: 2
@@ -84,7 +105,7 @@ export default {
               weight: 0.6
             },
             {
-              color: '#313536'
+              color: '#f5f5f5'
             }
           ]
         },
@@ -93,7 +114,7 @@ export default {
           elementType: 'geometry',
           stylers: [
             {
-              color: '#44a688'
+              color: '#f5f5f5'
             }
           ]
         },
@@ -102,7 +123,7 @@ export default {
           elementType: 'geometry',
           stylers: [
             {
-              color: '#13876c'
+              color: '#f5f5f5'
             }
           ]
         },
@@ -123,7 +144,7 @@ export default {
           elementType: 'labels',
           stylers: [
             {
-              visibility: 'on'
+              visibility: 'off'
             },
             {
               lightness: '14'
@@ -135,7 +156,7 @@ export default {
           elementType: 'geometry',
           stylers: [
             {
-              color: '#13876c'
+              color: '#e5e5e5'
             },
             {
               visibility: 'simplified'
@@ -147,10 +168,7 @@ export default {
           elementType: 'geometry',
           stylers: [
             {
-              color: '#067372'
-            },
-            {
-              lightness: '-20'
+              color: '#ffffff'
             }
           ]
         },
@@ -168,46 +186,33 @@ export default {
           elementType: 'geometry',
           stylers: [
             {
-              color: '#004757'
+              color: '#c9c9c9'
             }
           ]
         }
       ]
     }
   },
-  mounted() {
-    if (typeof google === 'undefined') {
-      const script = document.createElement('script')
-      script.onload = this.onScriptLoaded
-      script.type = 'text/javascript'
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAFg-9-NP8cjHAbzOOOHTYyiyMTzTOCnr8`
-      document.head.appendChild(script)
-    } else {
-      this.onScriptLoaded()
-    }
-  },
   methods: {
     returnToCenter() {
-      // this.$refs.gMap.map.setCenter(this.locations[0])
-    },
-    onScriptLoaded(event = null) {
-      if (event) {
-        console.log('Was added')
-      } else {
-        console.log('Already existed')
-      }
+      this.$refs.gMap.map.setCenter(this.locations[0])
     }
+  },
+  head: {
+    title: 'Contact ',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Contact page description'
+      }
+    ]
   }
 }
 </script>
-<style lang="scss">
-.GMap {
-  margin-top: 30px;
+<style lang="scss" scoped>
+.vue-map-container {
+  height: 450px;
   width: 100%;
-}
-
-.GMap__Wrapper {
-  width: 100%;
-  height: 400px;
 }
 </style>

@@ -22,6 +22,12 @@ export default {
     routes: otherRoutes.concat(getDynamicPaths(routeMap))
   },
   /*
+   ** Google key
+   */
+  env: {
+    VUE_APP_GOOGLE_MAPS_API_KEY: 'AIzaSyAFg-9-NP8cjHAbzOOOHTYyiyMTzTOCnr8'
+  },
+  /*
    ** Global CSS
    */
   css: css,

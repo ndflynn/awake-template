@@ -7,32 +7,34 @@
       @submit="$emit('submit', email)"
     >
       <p>Welcome to Fridays Cannabis.</p>
-      <h3 class="title">We need to check your ID first!</h3>
+      <h3 class="title">
+        We need to check your ID first!
+      </h3>
       <div class="field">
         <label class="label is-medium">Province or Territory</label>
         <div class="control">
           <div class="select is-rounded is-large is-info">
-            <field>
-              <select placeholder="Small">
-                <option>Ontario</option>
-                <option>Alberta</option>
-                <option>British Columbia</option>
-                <option>Manitoba</option>
-                <option>New Brunswick</option>
-                <option>Newfoundland and Labrador</option>
-                <option>Northwest Territories</option>
-                <option>Nova Scotia</option>
-                <option>Nunavut</option>
-                <option>Prince Edward Island</option>
-                <option>Quebec</option>
-                <option>Saskatchewan</option>
-                <option>Yukon</option>
-              </select>
-            </field>
+            <select placeholder="Small">
+              <option>Ontario</option>
+              <option>Alberta</option>
+              <option>British Columbia</option>
+              <option>Manitoba</option>
+              <option>New Brunswick</option>
+              <option>Newfoundland and Labrador</option>
+              <option>Northwest Territories</option>
+              <option>Nova Scotia</option>
+              <option>Nunavut</option>
+              <option>Prince Edward Island</option>
+              <option>Quebec</option>
+              <option>Saskatchewan</option>
+              <option>Yukon</option>
+            </select>
           </div>
         </div>
       </div>
-      <h4 class="title">Enter your birthday:</h4>
+      <h4 class="title">
+        Enter your birthday:
+      </h4>
       <div class="field is-grouped">
         <p class="control is-info">
           <label class="label is-medium">Day</label>

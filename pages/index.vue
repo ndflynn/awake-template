@@ -44,7 +44,7 @@
                 <div class="field is-grouped is-grouped-centered">
                   <p class="control">
                     <nuxt-link
-                      class="button is-rounded is-outlined button-about is-large"
+                      class="button is-rounded is-outlined button-about is-extra-large"
                       to="/shop"
                     >
                       Order online<br />&amp; pick up in store
@@ -52,7 +52,7 @@
                   </p>
                   <p>
                     <nuxt-link
-                      class="button is-rounded is-outlined button-about is-large"
+                      class="button is-rounded is-outlined button-about is-extra-large"
                       to="/contact"
                     >
                       Come visit us

@@ -36,15 +36,16 @@ p {
   font-size: 1.8rem;
 }
 
-.button.is-rounded.is-outlined.is-large,
-.input.is-rounded.is-outlined.is-large {
+.button.is-rounded.is-large,
+.input.is-rounded.is-large,
+.select.is-rounded.is-large {
   font-size: 18px;
   padding: 1.4em 2.8em;
   font-weight: 500;
   border-color: black;
 }
 
-.button.is-rounded.is-outlined.button-about {
+.button.is-rounded.is-extra-large {
   font-size: 30px;
   line-height: 1.2em;
   margin: 5rem 2rem;

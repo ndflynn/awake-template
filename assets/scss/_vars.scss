@@ -3,6 +3,11 @@
 
 $body-size: 10px;
 
+// Typography
+$family-primary: "Roboto", sans-serif;
+$family-sans-serif: "Roboto", sans-serif;
+$family-secondary: "Libre Caslon Text", serif;
+
 // Set your colors
 
 $green: #6d7967;
@@ -41,16 +46,16 @@ $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
+// Nav
 $navbar-background-color: transparent;
 $navbar-padding-horizontal: 4rem;
 $navbar-height: 18rem;
 
+// Forms
 $input-shadow: 3;
 $input-background-color: transparent;
 
-$family-primary: "Roboto", sans-serif;
-$family-sans-serif: "Roboto", sans-serif;
-$family-secondary: "Libre Caslon Text", serif;
+
 
 $button-border-width: 1px;
 
