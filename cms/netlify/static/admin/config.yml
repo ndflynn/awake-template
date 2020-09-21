@@ -42,8 +42,8 @@ collections:
       - {label: "Brand", name: "brand", widget: "relation", collection: "brand", searchFields: ["name"], valueField: "name", multiple: false}
       - {label: "Image", name: "image", widget: "image"}
       - {label: "Types", name: "types", widget: "select", options: ["Indica", "Hybrid", "Sativa", "High CBD"]}
-      - {label: "THC %", name: "thc", widget: "number", value_type: "float", min: 0, max: 100}
-      - {label: "CBD %", name: "cbd", widget: "number", value_type: "float", min: 0, max: 100}
+      - {label: "THC %", name: "thc", widget: "number", required: false, value_type: "float", min: 0, max: 100}
+      - {label: "CBD %", name: "cbd", widget: "number", required: false, value_type: "float", min: 0, max: 100}
       - {label: "On Sale", name: "sale", widget: "boolean", default: false}
       - {label: "Best Seller", name: "best", widget: "boolean", default: false}
       - {label: "New Product", name: "new", widget: "boolean", default: false}
