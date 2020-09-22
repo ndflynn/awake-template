@@ -5,7 +5,7 @@ import IntersectionObserver from '../components/IntersectionObserver'
 import LoadingSpinner from '../components/LoadingSpinner'
 import MainSection from '../components/MainSection'
 import NewsLetterSlideOut from '../components/NewsLetterSlideOut'
-import PostsGrid from '../components/grids/PostsGrid'
+import ProductsGrid from '../components/grids/ProductsGrid'
 import SiteFooter from '../components/SiteFooter'
 import SiteHero from '../components/SiteHero'
 import SiteLogo from '../components/SiteLogo'
@@ -18,7 +18,7 @@ Vue.component(IntersectionObserver.name, IntersectionObserver)
 Vue.component(LoadingSpinner.name, LoadingSpinner)
 Vue.component(MainSection.name, MainSection)
 Vue.component(NewsLetterSlideOut.name, NewsLetterSlideOut)
-Vue.component(PostsGrid.name, PostsGrid)
+Vue.component(ProductsGrid.name, ProductsGrid)
 Vue.component(SiteFooter.name, SiteFooter)
 Vue.component(SiteHero.name, SiteHero)
 Vue.component(SiteLogo.name, SiteLogo)

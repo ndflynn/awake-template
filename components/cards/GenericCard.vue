@@ -29,7 +29,7 @@
             >
               {{ title }}
             </h3>
-            <h4
+            <div
               :class="{
                 subtitle: true,
                 'is-6': true,
@@ -37,7 +37,7 @@
               }"
             >
               <slot></slot>
-            </h4>
+            </div>
           </nuxt-link>
         </div>
       </div>
@@ -51,6 +51,7 @@ export default {
     title: { type: String, default: '' },
     image: { type: String, default: '' },
     link: { type: String, default: '' },
+
     imageDimensions: { type: String, default: imageDimensionDefault }
   },
   computed: {

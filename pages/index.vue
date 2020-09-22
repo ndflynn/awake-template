@@ -76,7 +76,7 @@
     <main-section theme="one-column">
       <template v-slot:default>
         <!-- All Posts -->
-        <posts-grid />
+        <products-grid />
       </template>
     </main-section>
     <section class="section has-background-light py-0">
