@@ -71,7 +71,7 @@
       </div>
     </section>
     <section class="section has-background-light">
-      <h2 class="title">Best-sellers /<br />Recommended products</h2>
+      <h2 class="title">Best-sellers / <br />Recommended products</h2>
     </section>
     <main-section theme="one-column">
       <template v-slot:default>
@@ -79,6 +79,15 @@
         <products-grid />
       </template>
     </main-section>
+    <section class="section has-background-light">
+      <h2 class="title">
+        Follow us on Instagram
+      </h2>
+    </section>
+    <section class="section has-background-light">
+      <!-- All Posts -->
+      <home-instagram />
+    </section>
     <section class="section has-background-light py-0">
       <div class="container">
         <div class="columns is-vcentered">
@@ -136,11 +145,13 @@
 import { mapState } from 'vuex'
 import { setPageData } from '../helper'
 import AgegateFormModal from '~/components/AgegateFormModal'
+import HomeInstagram from '~/components/HomeInstagram'
 export default {
   name: 'HomePage',
   scrollToTop: true,
   components: {
-    AgegateFormModal
+    AgegateFormModal,
+    HomeInstagram
   },
   data() {
     return {

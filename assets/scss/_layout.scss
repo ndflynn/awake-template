@@ -36,9 +36,16 @@ p {
   font-size: 1.8rem;
 }
 
+.icon.is-large {
+    height: 32px !important;
+    width: 32px !important;
+    &:hover {
+      opacity: 0.8;
+    }
+}
+
 .button.is-rounded.is-large,
-.input.is-rounded.is-large,
-.select.is-rounded.is-large {
+.input.is-rounded.is-large {
   font-size: 18px;
   padding: 1.4em 2.8em;
   font-weight: 500;

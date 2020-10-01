@@ -9,7 +9,7 @@
             :srcset="responsiveImage.srcSet"
             :width="imageRatio[0]"
             :height="imageRatio[1]"
-            :sizes="`(min-width: 768px) ${100 / $siteConfig.posts.perRow}vw`"
+            :sizes="`(min-width: 768px) ${100 / $siteConfig.products.perRow}vw`"
           />
           <loading-spinner position="absolute" />
         </figure>

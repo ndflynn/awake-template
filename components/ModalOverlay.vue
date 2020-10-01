@@ -8,29 +8,9 @@
   >
     <div class="modal-background"></div>
     <div class="modal-card">
-      <header v-if="title" class="modal-card-head">
-        <p class="modal-card-title">
-          {{ title }}
-        </p>
-        <button class="delete" aria-label="close" @click="close()"></button>
-      </header>
       <section class="modal-card-body">
         <slot></slot>
       </section>
-      <footer v-if="footer" class="modal-card-foot">
-        <button class="button is-success" @click="$emit('confirm')">
-          {{ confirmText }}
-        </button>
-        <button
-          class="button"
-          @click="
-            close()
-            $emit('cancel')
-          "
-        >
-          Cancel
-        </button>
-      </footer>
     </div>
   </div>
 </template>
@@ -66,6 +46,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.modal-card-body {
+  padding: 6rem;
+}
 .modal {
   &.is-active {
     .modal-card {

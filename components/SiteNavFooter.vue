@@ -1,20 +1,10 @@
 <template>
   <nav
-    class="navbar is-transparent is-fixed-top"
-    :class="{ isSolid: scrollDown }"
+    class="navbar is-transparent"
     role="navigation"
     aria-label="main navigation"
   >
     <div class="container">
-      <div
-        :class="{
-          'navbar-menu': true,
-          'navbar-menu-start': true,
-          'is-active': active
-        }"
-      >
-        <ul class="navbar-start"></ul>
-      </div>
       <div class="navbar-brand">
         <nuxt-link class="navbar-item" to="/">
           <site-logo v-if="$siteConfig.logo === 'logo-component'" />
@@ -25,7 +15,6 @@
             class="logo"
           />
         </nuxt-link>
-        <hamburger-button @click="active = !active" />
       </div>
 
       <div
@@ -36,7 +25,7 @@
       >
         <ul class="navbar-end">
           <li
-            v-for="item in $siteConfig.mainMenu"
+            v-for="item in $siteConfig.mainMenuFooter"
             :key="item.link"
             class="navbar-item"
             @click="active = false"
@@ -56,29 +45,13 @@
   </nav>
 </template>
 <script>
-import HamburgerButton from '~/components/HamburgerButton'
 export default {
-  name: 'SiteNav',
-  components: { HamburgerButton },
+  name: 'SiteNavFooter',
   data() {
     return {
       active: false,
-      progress: 0,
-      scrollDown: false
+      progress: 0
     }
-  },
-  mounted() {
-    window.addEventListener('scroll', (e) => {
-      requestAnimationFrame(() => {
-        const scrollPos = window.scrollY
-        if (scrollPos >= 80) {
-          this.scrollDown = true
-        } else {
-          this.scrollDown = false
-        }
-        this.progress = scrollPos
-      })
-    })
   }
 }
 </script>
@@ -102,29 +75,5 @@ export default {
 }
 .navbar-item img {
   max-height: 2rem;
-}
-.navbar-burger {
-  height: auto;
-}
-
-.hero .navbar.isSolid {
-  background: white;
-  min-height: 8.4rem;
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-  > .container {
-    min-height: 8.4rem;
-  }
-  .navbar-brand {
-    min-height: 8.4rem;
-  }
-  .navbar-menu-start {
-    display: none;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .navbar-start,
-  .navbar-end {
-    min-width: 220px;
-  }
 }
 </style>

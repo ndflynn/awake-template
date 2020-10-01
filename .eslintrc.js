@@ -22,6 +22,7 @@ module.exports = {
     "no-console": "off",
     "vue/no-v-html": "off",
     "vue/html-self-closing": "off",
+    "vue/singleline-html-element-content-newline": "off",
     "nuxt/no-timing-in-fetch-data": "off",
     "no-unused-vars": "off"
   }

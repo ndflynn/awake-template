@@ -4,8 +4,8 @@
     :image="image"
     :link="link"
     :image-dimensions="
-      $siteConfig.posts.imageDimensions ||
-        $siteConfig.cards.imageDimensions ||
+      $siteConfig.products.imageDimensions ||
+        $siteConfig.products.imageDimensions ||
         null
     "
   >
@@ -17,9 +17,6 @@
     </h2>
     <h2 v-if="thc" class="thc-wrapper">
       <strong>{{ thc }}</strong>
-    </h2>
-    <h2 v-if="cbd" class="cbd-wrapper">
-      <strong>{{ cbd }}</strong>
     </h2>
     <h2 v-if="cbd" class="cbd-wrapper">
       <strong>{{ cbd }}</strong>
@@ -53,24 +50,24 @@ export default {
       default: ''
     },
     thc: {
-      type: String,
-      default: ''
+      type: Number,
+      default: null
     },
     cbd: {
-      type: String,
-      default: ''
+      type: Number,
+      default: null
     },
     sale: {
-      type: String,
-      default: ''
+      type: Boolean,
+      default: false
     },
     best: {
-      type: String,
-      default: ''
+      type: Boolean,
+      default: false
     },
     new: {
-      type: String,
-      default: ''
+      type: Boolean,
+      default: false
     }
   }
 }

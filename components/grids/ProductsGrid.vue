@@ -1,8 +1,8 @@
 <template>
   <resource-grid
     v-bind="$props"
-    :resource="$cms.post"
-    :theme="$siteConfig.posts.theme || $siteConfig.cards.theme || null"
+    :resource="$cms.product"
+    :theme="$siteConfig.products.theme || $siteConfig.cards.theme || null"
   >
     <template v-slot:default="{ item }">
       <product-card
@@ -27,7 +27,7 @@ export default {
   name: 'ProductsGrid',
   components: { ProductCard },
   props: {
-    perRow: { type: Number, default: 4 },
+    perRow: { type: Number, default: 5 },
     number: { type: Number, default: 0 },
     order: { type: String, default: 'DESC' },
     category: {

@@ -6,12 +6,9 @@
       image="/uploads/home-hero.jpg"
       size="small"
     ></site-hero>
-    <site-hero
-      title="Contact Us"
-      subtitle="Fridays Contact Page"
-      image="/uploads/contact-hero.jpg"
-      size="medium"
-    ></site-hero>
+    <section class="hero has-background-light">
+      <contact-map />
+    </section>
     <section class="section">
       <div class="container">
         <div class="columns is-vcentered">
@@ -29,9 +26,6 @@
           </div>
         </div>
       </div>
-    </section>
-    <section class="hero has-background-light">
-      <contact-map />
     </section>
   </div>
 </template>

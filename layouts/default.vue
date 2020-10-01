@@ -1,7 +1,7 @@
 <template>
   <div
     :class="
-      `site-layout-width-${$siteConfig.layout.width} posts-theme-${$siteConfig.posts.theme}`
+      `site-layout-width-${$siteConfig.layout.width} posts-theme-${$siteConfig.products.theme}`
     "
   >
     <nuxt />

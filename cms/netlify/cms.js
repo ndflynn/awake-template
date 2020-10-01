@@ -1,12 +1,10 @@
-import Post from './post'
-import Category from './category'
+import Product from './product'
 import LifeCycleHooks from './hooks/lifeCycle'
 class CMS {
   constructor(axios = false) {
     this.name = 'Netlify'
     this.slug = 'netlify'
-    this.post = new Post(axios)
-    this.category = new Category(axios)
+    this.product = new Product(axios)
     this.lifeCycleHooks = LifeCycleHooks
   }
 }

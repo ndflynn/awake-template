@@ -1,78 +1,130 @@
 <template>
   <div>
-    <form
-      target="_blank"
-      method="post"
-      :action="formAction"
-      @submit="$emit('submit', email)"
-    >
-      <p>Welcome to Fridays Cannabis.</p>
-      <h3 class="title">
-        We need to check your ID first!
+    <img
+      class="hero-bg-img"
+      :src="responsiveImage.src"
+      :lazy="false"
+      :srcset="responsiveImage.srcSet"
+    />
+    <form method="post" @submit="validateID">
+      <label class="control label is-large">
+        Welcome to Fridays Cannabis.
+      </label>
+      <h3 class="title control">
+        We need to check your&nbsp;ID&nbsp;first!
       </h3>
-      <div class="field">
-        <label class="label is-medium">Province or Territory</label>
-        <div class="control">
-          <div class="select is-rounded is-large is-info">
-            <select placeholder="Small">
-              <option>Ontario</option>
-              <option>Alberta</option>
-              <option>British Columbia</option>
-              <option>Manitoba</option>
-              <option>New Brunswick</option>
-              <option>Newfoundland and Labrador</option>
-              <option>Northwest Territories</option>
-              <option>Nova Scotia</option>
-              <option>Nunavut</option>
-              <option>Prince Edward Island</option>
-              <option>Quebec</option>
-              <option>Saskatchewan</option>
-              <option>Yukon</option>
-            </select>
-          </div>
-        </div>
+      <label class="control label is-large">Province or Territory</label>
+      <div class="select is-rounded is-large is-info">
+        <select v-model="selectProvince">
+          <option value="{ ID: 1, age: '18' }">
+            Alberta
+          </option>
+          <option value="{ ID: 2, age: '19' }">
+            British Columbia
+          </option>
+          <option value="{ ID: 3, age: '19' }">
+            Manitoba
+          </option>
+          <option value="{ ID: 4, age: '19' }">
+            New Brunswick
+          </option>
+          <option value="{ ID: 5, age: '19' }">
+            Newfoundland and Labrador
+          </option>
+          <option value="{ ID: 6, age: '19' }">
+            Northwest Territories
+          </option>
+          <option value="{ ID: 7, age: '19' }">
+            Nova Scotia
+          </option>
+          <option value="{ ID: 8, age: '19' }">
+            Nunavut
+          </option>
+          <option selected value="{ ID: 9, age: '19' }">
+            Ontario
+          </option>
+          <option value="{ ID: 10, age: '19' }">
+            Prince Edward Island
+          </option>
+          <option value="{ ID: 11, age: '21' }">
+            Quebec
+          </option>
+          <option value="{ ID: 12, age: '19' }">
+            Saskatchewan
+          </option>
+          <option value="{ ID: 13, age: '19' }">
+            Yukon
+          </option>
+        </select>
       </div>
-      <h4 class="title">
+
+      <h4 class="title control">
         Enter your birthday:
       </h4>
       <div class="field is-grouped">
-        <p class="control is-info">
-          <label class="label is-medium">Day</label>
+        <p class="control">
+          <label class="label is-large">Day</label>
           <input
+            id="inputDateDay"
             v-model="selectDay"
-            class="input is-large is-rounded is-info input-date has-text-info"
+            :class="{
+              input: true,
+              inputDate: true,
+              'is-large': isLarge,
+              'is-rounded': isRounded,
+              'is-info': isInfo,
+              'has-text-info': hasTextInfo
+            }"
             type="text"
             placeholder="DD"
             maxlength="2"
           />
         </p>
         <p class="control">
-          <label class="label is-medium">Month</label>
+          <label class="label is-large">Month</label>
           <input
+            id="inputDateMonth"
             v-model="selectMonth"
-            class="input is-large is-rounded is-info input-date has-text-info"
+            :class="{
+              input: true,
+              inputDate: true,
+              'is-large': isLarge,
+              'is-rounded': isRounded,
+              'is-info': isInfo,
+              'has-text-info': hasTextInfo
+            }"
             type="text"
             placeholder="MM"
             maxlength="2"
           />
         </p>
         <p class="control">
-          <label class="label is-medium">Year</label>
+          <label class="label is-large">Year</label>
           <input
+            id="inputDateYear"
             v-model="selectYear"
-            class="input is-large is-rounded is-info input-date has-text-info"
+            :class="{
+              input: true,
+              inputDate: true,
+              'is-large': isLarge,
+              'is-rounded': isRounded,
+              'is-info': isInfo,
+              'has-text-info': hasTextInfo
+            }"
             type="text"
             placeholder="YYYY"
             maxlength="4"
           />
         </p>
       </div>
-      <div class="control">
-        <button type="submit" class="button is-info is-large is-rounded">
-          Continue
-        </button>
-      </div>
-      <span v-if="selectYear" class="has-text-info">{{ getAge }}</span>
+      <button
+        class="button is-info is-large is-rounded has-text-primary"
+        type="submit"
+        value="Submit"
+      >
+        Continue
+      </button>
+      <span v-if="selectYear" class="control has-text-info">{{ getAge }}</span>
     </form>
   </div>
 </template>
@@ -82,25 +134,33 @@ export default {
   name: 'AgegateForm',
   data() {
     return {
+      hasErrors: false,
       selectProvince: null,
       selectDay: null,
       selectMonth: null,
-      selectYear: null
+      selectYear: null,
+      formValid: true,
+      selectDayValid: true,
+      isRounded: true,
+      isInfo: true,
+      hasTextInfo: true,
+      isLarge: true,
+      image: '/uploads/home-hero.jpg'
     }
   },
   computed: {
-    formAction() {
-      if (this.$siteConfig.newsletter.mailchimp.on) {
-        return this.$siteConfig.newsletter.mailchimp.formAction
+    responsiveImage() {
+      if (this.image.indexOf('/uploads') === 0) {
+        return require(`~/assets${this.image}`)
       }
-      return this.$siteConfig.newsletter.custom.formAction
+      return { src: this.image, srcSet: '' }
     },
     getAge() {
       // `this` points to the vm instance
       const birthday = new Date()
       birthday.setFullYear(this.selectYear)
-      birthday.setMonth(this.selectMonth)
-      birthday.setDate(this.selectDay)
+      birthday.setMonth(this.selectMonth - 1)
+      birthday.setDate(this.selectDay - 1)
 
       const currdate = new Date()
       currdate.setTime(birthday.getTime())
@@ -110,10 +170,72 @@ export default {
 
       return (currdate - birthday) / 31557600000
     }
+  },
+  methods: {
+    validateID(e) {
+      this.hasErrors = false
+      const inputDateDay = document.getElementById('inputDateDay')
+      const inputDateDayField = isNaN(this.selectDay)
+      const inputDateMonth = document.getElementById('inputDateMonth')
+      const inputDateMonthField = isNaN(this.selectMonth)
+      const inputDateYear = document.getElementById('inputDateYear')
+      const inputDateYearField = isNaN(this.selectYear)
+      if (this.selectDay && !inputDateDayField) {
+        inputDateDay.classList.remove('is-danger')
+      } else {
+        inputDateDay.classList.add('is-danger')
+        this.hasErrors = true
+      }
+      if (this.selectMonth && !inputDateMonthField) {
+        inputDateMonth.classList.remove('is-danger')
+      } else {
+        inputDateMonth.classList.add('is-danger')
+        this.hasErrors = true
+      }
+      if (this.selectYear && !inputDateYearField) {
+        inputDateYear.classList.remove('is-danger')
+      } else {
+        inputDateYear.classList.add('is-danger')
+        this.hasErrors = true
+      }
+
+      if (this.hasErrors === false) {
+        console.log(
+          'modal errors: ' +
+            this.hasErrors +
+            ', ' +
+            this.selectProvince.value.age
+        )
+      } else {
+      }
+
+      e.preventDefault()
+    }
   }
 }
 </script>
 <style lang="scss" scoped>
+form {
+  z-index: 100;
+  text-align: left;
+}
+h4,
+.button {
+  margin-top: 3rem;
+}
+h3.title {
+  font-size: 3rem;
+}
+.hero-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 .title,
 .label,
 select,
@@ -123,7 +245,27 @@ p {
   border-color: $pink-lighter;
   font-weight: 400;
 }
-.input-date {
-  max-width: 100px;
+.select.is-rounded.is-large,
+.input.is-rounded.is-large {
+  font-size: 18px;
+  font-weight: 500;
+  border-color: $pink-lighter;
+  color: $pink-lighter;
+}
+.input.is-rounded.is-large.is-danger {
+  border-color: red;
+}
+.input.is-rounded.is-large {
+  padding: 1em;
+}
+.select select option {
+  color: $pink-lighter;
+}
+.inputDate {
+  max-width: 86px;
+}
+::placeholder {
+  color: $pink-lighter;
+  opacity: 0.5;
 }
 </style>

@@ -20,22 +20,40 @@ export default {
   googleMaps: {
     on: true
   },
-  mainMenuStart: [
+  mainMenu: [
     {
       name: 'SHOP NOW',
-      link: '/shop'
+      link: 'https://menu.fridayscannabis.com'
     },
     {
       name: 'FAQ',
-      link: '/categories'
-    }
-  ],
-  mainMenu: [
+      link: '/faq'
+    },
     {
       name: 'CONTACT',
       link: '/contact'
     }
   ],
+
+  mainMenuFooter: [
+    {
+      name: 'HOME',
+      link: '/'
+    },
+    {
+      name: 'SHOP NOW',
+      link: 'https://menu.fridayscannabis.com'
+    },
+    {
+      name: 'FAQ',
+      link: '/faq'
+    },
+    {
+      name: 'CONTACT',
+      link: '/contact'
+    }
+  ],
+
   hero: {
     theme: 'dark' // options: mist, light, dark
   },
@@ -69,7 +87,7 @@ export default {
     mailchimp: {
       on: true,
       formAction:
-        'https://danielkelly.us3.list-manage.com/subscribe/post?u=d3c2e762b66a2353d0bc29bf3&amp;id=2abeaa06e0'
+        'https://fridayscannabis.us18.list-manage.com/subscribe/post?u=ec54bddd5b0ad3e2f3adb033f&amp;id=46d239de71'
     },
     custom: {
       on: false,
@@ -77,24 +95,12 @@ export default {
     }
   },
 
-  // Categories
-  categories: {
-    on: true,
-    perPage: 6,
-    imageDimensions: null, // See card.imageDimensions (can be unique for categories if set here)
-    theme: null // See card.theme (can be unique for categories if set here)
-  },
-
   // Posts
-  posts: {
+  products: {
     on: true,
     theme: null, // See card.theme (can be unique for posts if set here)
     imageDimensions: null, // See card.imageDimensions (can be unique for posts if set here)
-    displayAuthor: true,
-    date: {
-      display: true
-    },
-    perRow: 4,
+    perRow: 5,
     perPage: 6
   }
 }
