@@ -26,10 +26,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container,
-#home-instagram {
-  height: 400px;
-}
-.vue-iframe iframe {
+.vue-iframe,
+.vue-iframe iframe,
+iframe#home-instagram {
+  width: 100%;
   height: 400px;
 }
 </style>
