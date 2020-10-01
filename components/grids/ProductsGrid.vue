@@ -8,7 +8,7 @@
       <product-card
         :title="item.title"
         :image="item.image"
-        :link="item.slug ? `/${item.slug}` : ''"
+        :link="item.slug ? `${item.slug}` : ''"
         :brand="item.brand"
         :types="item.types"
         :thc="item.thc"
@@ -27,7 +27,7 @@ export default {
   name: 'ProductsGrid',
   components: { ProductCard },
   props: {
-    perRow: { type: Number, default: 5 },
+    perRow: { type: Number, default: 4 },
     number: { type: Number, default: 0 },
     order: { type: String, default: 'DESC' },
     category: {

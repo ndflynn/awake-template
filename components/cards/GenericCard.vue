@@ -1,7 +1,11 @@
 <template>
   <div class="card">
     <div class="card-image">
-      <component :is="link ? 'nuxt-link' : 'span'" :to="link">
+      <component
+        :is="link.startsWith('http') ? 'a' : 'nuxt-link'"
+        :href="fullSlug"
+        :to="link"
+      >
         <figure :class="`image is-${imageRatioClass}`">
           <opti-image
             v-if="image"
@@ -18,7 +22,7 @@
     <div class="card-content">
       <div class="media">
         <div class="media-content">
-          <nuxt-link :to="link">
+          <a :href="link">
             <h3
               :class="
                 `title
@@ -38,23 +42,32 @@
             >
               <slot></slot>
             </div>
-          </nuxt-link>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-const imageDimensionDefault = '16x9'
+const imageDimensionDefault = '4x3'
 export default {
   props: {
     title: { type: String, default: '' },
     image: { type: String, default: '' },
     link: { type: String, default: '' },
+    brandSlug: { type: String, default: '' },
 
     imageDimensions: { type: String, default: imageDimensionDefault }
   },
   computed: {
+    fullSlug() {
+      const fullSlug =
+        'https://menu.fridayscannabis.com/products/' +
+        this.brandSlug +
+        '-' +
+        this.link
+      return fullSlug
+    },
     imageRatioClass() {
       const imageDimensions = this.imageDimensions || imageDimensionDefault
       return imageDimensions.toLowerCase().replace('x', 'by')
@@ -90,7 +103,7 @@ export default {
   &:before {
     transform-origin: left;
     content: '';
-    background: #eee;
+    background: #fff;
     width: 100%;
     position: absolute;
     top: 0;
@@ -109,7 +122,7 @@ export default {
 .card img {
   transition: 0.8s ease-in-out all;
   &:hover {
-    transform: scale(1.02);
+    transform: opacity(0.9);
   }
 }
 </style>
