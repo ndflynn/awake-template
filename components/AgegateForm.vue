@@ -1,11 +1,5 @@
 <template>
   <div>
-    <img
-      class="hero-bg-img"
-      :src="responsiveImage.src"
-      :lazy="false"
-      :srcset="responsiveImage.srcSet"
-    />
     <form method="post" @submit="validateID">
       <label class="control label is-large">
         Welcome to Fridays Cannabis.
@@ -149,12 +143,6 @@ export default {
     }
   },
   computed: {
-    responsiveImage() {
-      if (this.image.indexOf('/uploads') === 0) {
-        return require(`~/assets${this.image}`)
-      }
-      return { src: this.image, srcSet: '' }
-    },
     getAge() {
       // `this` points to the vm instance
       const birthday = new Date()
@@ -249,6 +237,7 @@ p {
 .input.is-rounded.is-large {
   font-size: 18px;
   font-weight: 500;
+  text-align: center;
   border-color: $pink-lighter;
   color: $pink-lighter;
 }

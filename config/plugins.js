@@ -4,6 +4,5 @@ export default [
   '~/plugins/Disqus',
   '~/plugins/EventBus',
   '~/plugins/Components',
-  '~/plugins/google-maps',
-  { src: '~/plugins/vue-iframes', mode: 'client' }
+  '~/plugins/google-maps'
 ]

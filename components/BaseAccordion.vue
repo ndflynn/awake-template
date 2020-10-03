@@ -6,7 +6,7 @@
       </div>
     </div>
     <div v-show="show" class="content">
-      <div><slot name="content"></slot></div>
+      <slot name="content"></slot>
     </div>
   </div>
 </template>
@@ -28,12 +28,13 @@ export default {
 <style lang="scss" scoped>
 .wrapper {
   margin: 0 auto;
-  padding: 10px 0 0;
+  padding: 20px 0;
   border-bottom: 1px solid black;
 }
 .question {
   font-weight: 500;
-  padding: 0 0 10px;
+  font-size: 1.8rem;
+  padding: 0;
 }
 .accordion {
   display: flex;
@@ -50,10 +51,8 @@ export default {
 }
 .content {
   text-align: left;
+  font-size: 1.6rem;
   width: 100%;
-  padding: 0 0 10px;
-  p {
-    font-size: 1.6rem;
-  }
+  padding: 10px 0 0;
 }
 </style>

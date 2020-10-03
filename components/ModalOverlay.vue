@@ -6,7 +6,14 @@
       'is-closing': closing
     }"
   >
-    <div class="modal-background"></div>
+    <div class="modal-background">
+      <img
+        class="hero-bg-img"
+        :src="responsiveImage.src"
+        :lazy="false"
+        :srcset="responsiveImage.srcSet"
+      />
+    </div>
     <div class="modal-card">
       <section class="modal-card-body">
         <slot></slot>
@@ -26,7 +33,16 @@ export default {
   data() {
     return {
       active: false,
-      closing: false
+      closing: false,
+      image: '/uploads/home-hero.jpg'
+    }
+  },
+  computed: {
+    responsiveImage() {
+      if (this.image.indexOf('/uploads') === 0) {
+        return require(`~/assets${this.image}`)
+      }
+      return { src: this.image, srcSet: '' }
     }
   },
   created() {
@@ -46,8 +62,18 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.hero-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 .modal-card-body {
-  padding: 6rem;
+  background-color: transparent;
 }
 .modal {
   &.is-active {

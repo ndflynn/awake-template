@@ -18,7 +18,8 @@ export const actions = {
     this.$cms = context.store.$cms
   },
   set({ commit }, { resource, slug }) {
-    if (!resource) {
+    setOtherPageData(commit, this.$siteConfig)
+    /* if (!resource) {
       setOtherPageData(commit, this.$siteConfig)
     } else {
       const theResource = isString(resource) ? this.$cms[resource] : resource
@@ -27,7 +28,7 @@ export const actions = {
       })
       data.slug = slug
       commit('set', data)
-    }
+    } */
   }
 }
 

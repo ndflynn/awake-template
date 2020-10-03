@@ -20,7 +20,7 @@
               {{ accordion.title }}
             </template>
             <template v-slot:content>
-              <div>{{ accordion.text }}</div>
+              {{ accordion.text }}
             </template>
           </BaseAccordian>
         </div>
@@ -67,21 +67,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.accordion {
-  display: flex;
-  cursor: pointer;
-
-  margin: 0;
-}
-.title {
-  margin: 0;
-  color: darkgreen;
-}
-.content {
-  text-align: left;
-  width: 100%;
-  border-bottom: 1px solid black;
-  padding: 10px;
-}
-</style>

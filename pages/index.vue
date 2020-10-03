@@ -6,12 +6,12 @@
       image="/uploads/home-hero.jpg"
       size="medium"
     >
-      <nuxt-link
+      <a
         class="button is-info is-rounded is-outlined is-large"
-        to="/shop"
+        href="https://menu.fridayscannabis.com"
       >
         VIEW MENU
-      </nuxt-link>
+      </a>
       <button
         class="button is-primary"
         @click="$eventBus.$emit('modal-triggered', 'agegate-modal')"
@@ -42,22 +42,22 @@
             <div class="columns is-centered">
               <div class="column">
                 <div class="field is-grouped is-grouped-centered">
-                  <p class="control">
-                    <nuxt-link
+                  <div class="control">
+                    <a
                       class="button is-rounded is-outlined button-about is-extra-large"
-                      to="/shop"
+                      href="https://menu.fridayscannabis.com"
                     >
                       Order online<br />&amp; pick up in store
-                    </nuxt-link>
-                  </p>
-                  <p>
+                    </a>
+                  </div>
+                  <div>
                     <nuxt-link
                       class="button is-rounded is-outlined button-about is-extra-large"
                       to="/contact"
                     >
                       Come visit us
                     </nuxt-link>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -114,7 +114,7 @@
               @submit="$emit('submit', email)"
             >
               <div class="field is-grouped">
-                <p class="control is-expanded">
+                <div class="control is-expanded">
                   <input
                     v-model="email"
                     class="input is-rounded is-outlined is-large"
@@ -122,7 +122,7 @@
                     name="EMAIL"
                     placeholder="Enter your email"
                   />
-                </p>
+                </div>
                 <div class="control">
                   <button
                     type="submit"
